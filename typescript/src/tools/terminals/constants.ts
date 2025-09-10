@@ -15,20 +15,18 @@ export const CREATE_TERMINAL_ACTION_DESCRIPTION = `Schedules a terminal action b
         - Your API credential must have the "Management API—Terminal actions read and write" role to make this request.
 
     Examples:
-        create_terminal_action_mcp(
-            {
-                actionDetails: {
-                    "type": "InstallAndroidApp",
-                    "appId": "ANDA422LZ223223K5F694GCCF732K8"
-                },
-                terminalIds: [
-                    "S1E-000150183300032",
-                    "S1E-000150183300033",
-                    "S1F2-000150183300034"
-                ],
-                scheduledAt: "2021-12-12T20:21:22-0100",
-            }
-        )
+        create_terminal_action({
+            actionDetails: {
+                "type": "InstallAndroidApp",
+                "appId": "ANDA422LZ223223K5F694GCCF732K8"
+            },
+            terminalIds: [
+                "S1E-000150183300032",
+                "S1E-000150183300033",
+                "S1F2-000150183300034"
+            ],
+            scheduledAt: "2021-12-12T20:21:22-0100",
+        })
         # Returns a success or error message.`;
 
 export const GET_ANDROID_APP_NAME = "get_android_app";
@@ -47,80 +45,11 @@ export const GET_ANDROID_APP_DESCRIPTION = `Gets the details of the Android app.
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        get_android_app({id="TestApp", companyId="TestCompany"})
+        get_android_app({
+            id: "TestApp",
+            companyId: "TestCompany"
+        })
         # Returns the Adyen API response object listing Android app for {id="TestApp", companyId="TestCompany"}, or an error string.`;
-
-export const GET_TERMINAL_SETTINGS_COMPANY_LEVEL_NAME = "get_terminal_settings_company_level";
-export const GET_TERMINAL_SETTINGS_COMPANY_LEVEL_DESCRIPTION = `Gets the terminal settings that are configured for the company account level.
-
-    Args:
-        companyId (string, required): The unique identifier of the company account
-
-    Returns:
-        object | string: The Adyen API response object reflecting the terminal settings that is set for company level.
-
-    Notes:
-        - Corresponds to the Adyen Management API GET /companies/{companyId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read" or "Management API—Terminal settings read and write" role to make this request.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        get_terminal_settings_company_level_mcp({companyId="TestCompany"})
-        # Returns the Adyen API response object listing terminal settings for "TestCompany", or an error string.`;
-
-export const GET_TERMINAL_SETTINGS_MERCHANT_LEVEL_NAME = "get_terminal_settings_merchant_level";
-export const GET_TERMINAL_SETTINGS_MERCHANT_LEVEL_DESCRIPTION = `Gets terminal settings that are configured for the merchant account level.
-
-    Args:
-        merchantId (string, required): The unique identifier of the merchant account
-
-    Returns:
-        object | string: The Adyen API response object reflecting the terminal settings that is set for merchant level.
-
-    Notes:
-        - Corresponds to the Adyen Management API GET /merchants/{merchantId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read" or "Management API—Terminal settings read and write" role to make this request.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        get_terminal_settings_merchant_level_mcp({merchantId="TestMerchant"})
-        # Returns the Adyen API response object listing terminal settings for "TestMerchant", or an error string.`;
-
-export const GET_TERMINAL_SETTINGS_STORE_LEVEL_NAME = "get_terminal_settings_store_level";
-export const GET_TERMINAL_SETTINGS_STORE_LEVEL_DESCRIPTION = `Gets terminal settings that are configured for the store level.
-
-    Args:
-        storeId (string, required): The unique identifier of the store
-
-    Returns:
-        object | string: The Adyen API response object reflecting the terminal settings that is set for store level.
-
-    Notes:
-        - Corresponds to the Adyen Management API GET /stores/{storeId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read" or "Management API—Terminal settings read and write" role to make this request.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        get_terminal_settings_store_level_mcp({storeId="TestStore"})
-        # Returns the Adyen API response object listing terminal settings for "TestStore", or an error string.`;
-
-export const GET_TERMINAL_SETTINGS_TERMINAL_LEVEL_NAME = "get_terminal_settings_terminal_level";
-export const GET_TERMINAL_SETTINGS_TERMINAL_LEVEL_DESCRIPTION = `Gets terminal settings that are configured for the terminal level.
-
-    Args:
-        terminalId (string, required): The unique identifier of the terminal
-
-    Returns:
-        object | string: The Adyen API response object reflecting the terminal settings that is set for terminal level.
-
-    Notes:
-        - Corresponds to the Adyen Management API GET /terminals/{terminalId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read" or "Management API—Terminal settings read and write" role to make this request.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        get_terminal_settings_terminal_level_mcp({terminalId="TestTerminal"})
-        # Returns the Adyen API response object listing terminal settings for "TestTerminal", or an error string.`;
 
 export const LIST_ANDROID_APPS_NAME = "list_android_apps";
 export const LIST_ANDROID_APPS_DESCRIPTION = `Gets a list of Android apps.
@@ -141,7 +70,9 @@ export const LIST_ANDROID_APPS_DESCRIPTION = `Gets a list of Android apps.
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        get_android_apps({companyId="TestCompany"})
+        get_android_apps({
+            companyId: "TestCompany"
+        })
         # Returns the Adyen API response object listing Android apps for "TestCompany", or an error string.`;
 
 export const LIST_ANDROID_CERTIFICATES_NAME = "list_android_certificates";
@@ -162,7 +93,9 @@ export const LIST_ANDROID_CERTIFICATES_DESCRIPTION = `Gets a list of Android cer
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        get_android_certificates({companyId="TestCompany"})
+        get_android_certificates({
+            companyId: "TestCompany"
+        })
         # Returns the Adyen API response object listing Android certificates for "TestCompany", or an error string.`;
 
 export const LIST_TERMINALS_NAME = "list_terminals";
@@ -188,7 +121,9 @@ export const LIST_TERMINALS_DESCRIPTION = `Gets a list of payment terminals.
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        get_terminals_mcp({searchQuery="P400"})
+        list_terminals({
+            searchQuery: "P400"
+        })
         # Returns the Adyen API response object listing terminals with "P400" in their ID, or an error string.`;
 
 export const LIST_TERMINAL_ACTIONS_NAME = "list_terminal_actions";
@@ -210,7 +145,13 @@ export const LIST_TERMINAL_ACTIONS_DESCRIPTION = `Gets a list of terminal action
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        get_terminal_actions({companyId="TestCompany", type="InstallAndroidApp", status="pending", pageNumber=1, pageSize=20})
+        list_terminal_actions({
+            companyId: "TestCompany",
+            type: "InstallAndroidApp",
+            status: "pending",
+            pageNumber: 1,
+            pageSize: 20
+        })
         # Returns the Adyen API response object listing terminal actions for "TestCompany", or an error string.`;
 
 export const REASSIGN_TERMINAL_NAME = "reassign_terminal";
@@ -232,18 +173,41 @@ export const REASSIGN_TERMINAL_DESCRIPTION = `Reassigns a payment terminal to a 
         - When reassigning to a merchant account, you must specify the inventory field.
 
     Examples:
-        reassign_terminal_mcp({terminalId="S1F2-000150183300034", storeId="YOUR_STORE_ID"})
+        reassign_terminal({
+            terminalId: "S1F2-000150183300034",
+            storeId: "YOUR_STORE_ID"
+        })
         # Returns a success or error message.`;
 
-export const UPDATE_TERMINAL_SETTINGS_COMPANY_LEVEL_NAME = "update_terminal_settings_company_level";
-export const UPDATE_TERMINAL_SETTINGS_COMPANY_LEVEL_DESCRIPTION = `Updates the terminal settings that are configured for the company account level.
+// --- Description Templates for Terminal Settings Subtools ---
+
+export const GET_TERMINAL_SETTINGS_SUBTOOL_DESCRIPTION_TEMPLATE = `Gets the '{{SETTING_NAME}}' settings that are configured for the {{LEVEL}} level.
 
     Args:
-        companyId (string, required): The unique identifier of the company account
-        settings (object, required): The terminal settings object to be updated. To change a parameter, include the full object that contains it. To restore a parameter to the value inherited from the Adyen PSP level, provide an empty value or omit the parameter.
+        {{ID_NAME}} (string, required): The unique identifier of the {{LEVEL}}
 
     Returns:
-        object | string: The Adyen API response object reflecting the updated terminal settings for the company level.
+        object | string: The Adyen API response object reflecting the '{{SETTING_NAME}}' settings that is set for {{LEVEL}} level.
+
+        Notes:
+        - Corresponds to the Adyen Management API GET /terminals/{terminalId}/terminalSettings endpoint.
+        - Your API credential must have the "Management API—Terminal settings read" or "Management API—Terminal settings read and write" role to make this request.
+        - In the live environment, requests to this endpoint are subject to rate limits.
+
+    Examples:
+        get_terminal_settings_{{SETTING_KEY}}_{{LEVEL}}_level({
+            {{ID_NAME}}: "TestId"
+        })
+        # Returns the Adyen API response object listing '{{SETTING_NAME}}' settings for "TestId", or an error string.`;
+
+export const UPDATE_TERMINAL_SETTINGS_SUBTOOL_DESCRIPTION_TEMPLATE = `Updates the '{{SETTING_NAME}}' settings that are configured for the {{LEVEL}} level.
+
+    Args:
+        {{ID_NAME}} (string, required): The unique identifier of the {{LEVEL}} account.
+        settings (object, required): The {{SETTING_NAME}} settings object to apply.
+
+    Returns:
+        object | string: The Adyen API response object reflecting the updated terminal settings.
 
     Notes:
         - Corresponds to the Adyen Management API PATCH /companies/{companyId}/terminalSettings endpoint.
@@ -252,77 +216,8 @@ export const UPDATE_TERMINAL_SETTINGS_COMPANY_LEVEL_DESCRIPTION = `Updates the t
         - In the live environment, requests to this endpoint are subject to rate limits.
 
     Examples:
-        update_terminal_settings_company_level_mcp({
-            companyId="TestCompany",
-            settings={ "signature": { "skipSignature": true } }
+        update_terminal_settings_{{SETTING_KEY}}_{{LEVEL}}_level({
+            {{ID_NAME}}: "TestId",
+            settings: {{EXAMPLE_OBJECT}}
         })
-        # Returns the updated terminal settings object for "TestCompany", or an error string.`;
-
-export const UPDATE_TERMINAL_SETTINGS_MERCHANT_LEVEL_NAME = "update_terminal_settings_merchant_level";
-export const UPDATE_TERMINAL_SETTINGS_MERCHANT_LEVEL_DESCRIPTION = `Updates terminal settings that are configured for the merchant account level.
-
-    Args:
-        merchantId (string, required): The unique identifier of the merchant account.
-        settings (object, required): The terminal settings object to be updated. To change a parameter, include the full object that contains it. To restore a parameter to the value inherited from a higher level, provide an empty value or omit the parameter.
-
-    Returns:
-        object | string: The Adyen API response object reflecting the updated terminal settings for the merchant level, or an error string.
-
-    Notes:
-        - Corresponds to the Adyen Management API PATCH /merchants/{merchantId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read and write" role.
-        - For sensitive terminal settings, the "Management API—Terminal settings Advanced read and write" role is required.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        update_terminal_settings_merchant_level_mcp({
-            merchantId="TestMerchant",
-            settings={ "offlineProcessing": { "chipFloorLimit": 10000 } }
-        })
-        # Returns the updated terminal settings object for "TestMerchant", or an error string.`;
-
-export const UPDATE_TERMINAL_SETTINGS_STORE_LEVEL_NAME = "update_terminal_settings_store_level";
-export const UPDATE_TERMINAL_SETTINGS_STORE_LEVEL_DESCRIPTION = `Updates terminal settings that are configured for the store level.
-
-    Args:
-        storeId (string, required): The unique identifier of the store.
-        settings (object, required): The terminal settings object to be updated. To change a parameter, include the full object that contains it. To restore a parameter to the value inherited from a higher level, provide an empty value or omit the parameter.
-
-    Returns:
-        object | string: The Adyen API response object reflecting the updated terminal settings for the store level, or an error string.
-
-    Notes:
-        - Corresponds to the Adyen Management API PATCH /stores/{storeId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read and write" role.
-        - For sensitive terminal settings, the "Management API—Terminal settings Advanced read and write" role is required.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        update_terminal_settings_store_level_mcp({
-            storeId="TestStore",
-            settings={ "receiptOptions": { "qrCodeData": "https://example.com/order" } }
-        })
-        # Returns the updated terminal settings object for "TestStore", or an error string.`;
-
-export const UPDATE_TERMINAL_SETTINGS_TERMINAL_LEVEL_NAME = "update_terminal_settings_terminal_level";
-export const UPDATE_TERMINAL_SETTINGS_TERMINAL_LEVEL_DESCRIPTION = `Updates terminal settings that are configured for the terminal level.
-
-    Args:
-        terminalId (string, required): The unique identifier of the payment terminal.
-        settings (object, required): The terminal settings object to be updated. To change a parameter, include the full object that contains it. To restore a parameter to the value inherited from a higher level, provide an empty value or omit the parameter.
-
-    Returns:
-        object | string: The Adyen API response object reflecting the updated terminal settings, or an error string.
-
-    Notes:
-        - Corresponds to the Adyen Management API PATCH /terminals/{terminalId}/terminalSettings endpoint.
-        - Your API credential must have the "Management API—Terminal settings read and write" role.
-        - For sensitive terminal settings, the "Management API—Terminal settings Advanced read and write" role is required.
-        - In the live environment, requests to this endpoint are subject to rate limits.
-
-    Examples:
-        update_terminal_settings_terminal_level_mcp({
-            terminalId="TestTerminal",
-            settings={ "hardware": { "displayMaximumBackLight": 80 } }
-        })
-        # Returns the updated terminal settings object for "TestTerminal", or an error string.`;
+        # Returns the updated terminal settings object, or an error string.`;
